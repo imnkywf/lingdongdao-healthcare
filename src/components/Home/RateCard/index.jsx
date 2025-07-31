@@ -1,94 +1,127 @@
-import Taro, { useReady } from '@tarojs/taro'
-import { View, Canvas } from '@tarojs/components'
+import { useRef, useMemo } from 'react'
+import { View, Text } from '@tarojs/components'
+import { CircleProgress, ConfigProvider } from '@nutui/nutui-react-taro'
+import { Add } from '@nutui/icons-react-taro'
+
 import './index.scss'
 
-export default function BmiGaugeCard({
-  value = 65.0,
-  unit = 'kg',
-  time = '2025/07/31 14:26',
-}) {
-  useReady(() => {
-    const query = Taro.createSelectorQuery()
-    query.select('#bmiGaugeCanvas')
-      .fields({ node: true, size: true })
-      .exec(res => {
-        const canvas = res[0].node
-        const ctx = canvas.getContext('2d')
+export default function RateCard() {
+  const bmi = 20 // 示例BMI值，你可以根据实际数据调整
+  const containerRef = useRef(null)
 
-        const dpr = Taro.getSystemInfoSync().pixelRatio || 1
-        const width = 240
-        const height = 130
-        canvas.width = width * dpr
-        canvas.height = height * dpr
-        ctx.scale(dpr, dpr) // ✅ 关键：缩放 context 使绘制变高清
-
-        const centerX = width / 2 - 10
-        const centerY = height - 30
-        const radius = centerX - 30
-        const percent = Math.min(value / 100, 1)
-        const angleStart = Math.PI
-        const angleEnd = Math.PI + Math.PI * percent
-
-        ctx.clearRect(0, 0, width, height)
-
-        // 背景弧
-        ctx.beginPath()
-        ctx.arc(centerX, centerY, radius, Math.PI, 0)
-        ctx.strokeStyle = '#eee'
-        ctx.lineWidth = 12
-        ctx.stroke()
-
-        // 彩色进度弧
-        const gradient = ctx.createLinearGradient(0, 0, width, 0)
-        gradient.addColorStop(0, '#58D9F9')
-        gradient.addColorStop(0.5, '#7CFFCB')
-        gradient.addColorStop(1, '#FDDD60')
-
-        ctx.beginPath()
-        ctx.arc(centerX, centerY, radius, angleStart, angleEnd)
-        ctx.strokeStyle = gradient
-        ctx.lineWidth = 12
-        ctx.lineCap = 'round'
-        ctx.stroke()
-
-        // 指针（三角形）
-        const px = centerX + radius * Math.cos(angleEnd)
-        const py = centerY + radius * Math.sin(angleEnd)
-
-        ctx.beginPath()
-        ctx.moveTo(px, py)
-        ctx.lineTo(px - 10, py - 6)
-        ctx.lineTo(px - 10, py + 6)
-        ctx.closePath()
-        ctx.fillStyle = '#fff'
-        ctx.fill()
-
-        // 数值
-        ctx.font = 'bold 28px sans-serif'
-        ctx.fillStyle = '#fff'
-        ctx.textAlign = 'center'
-        ctx.fillText(`${value.toFixed(1)}`, centerX - 5, centerY - 35)
-
-        // 单位
-        ctx.font = '14px sans-serif'
-        ctx.fillStyle = '#ccc'
-        ctx.fillText(unit, centerX + 40, centerY -35)
-
-        // 时间
-        ctx.font = '14px sans-serif'
-        ctx.fillStyle = '#ccc'
-        ctx.fillText(time, centerX, centerY - 5)
-      })
-  })
+  // 根据BMI值计算颜色和百分比
+  const { color, percent: circlePercent, title } = useMemo(() => {
+    if (bmi < 18.5) {
+      return { title: '偏瘦', color: '#87CEEB', percent: (bmi / 18.5) * 100 } // 浅蓝色 - 偏瘦
+    } else if (bmi >= 18.5 && bmi < 25) {
+      return { title: '正常', color: '#90EE90', percent: ((bmi - 18.5) / (25 - 18.5)) * 100 } // 浅绿色 - 正常
+    } else if (bmi >= 25 && bmi < 30) {
+      return { title: '超重', color: '#FFD700', percent: ((bmi - 25) / (30 - 25)) * 100 } // 黄色 - 超重
+    } else if (bmi >= 30 && bmi < 40) {
+      return { title: '肥胖', color: '#FFA500', percent: ((bmi - 30) / (40 - 30)) * 100 } // 橙色 - 肥胖
+    } else {
+      return { title: '极度肥胖', color: '#FF0000', percent: 100 } // 红色 - 极度肥胖
+    }
+  }, [bmi])
 
   return (
-    <View className='bmi-card' style={{padding: '10px 0' }}>
-      <Canvas
-        type='2d'
-        id='bmiGaugeCanvas'
-        canvasId='bmiGaugeCanvas'
-        style={{ width: '240px', height: '130px' }}
-      />
+    <View className="health-rate-card">
+
+      {/* 添加小图标  */}
+      <View style={{ width: '25px', height: '25px', position: 'absolute', top: '10px', right: '10px', border: "1px solid #fff", borderRadius: "50%", backgroundColor: 'rgba(255,255,255,0.2)' }}>
+        <Add style={{ width: '25px', height: '25px', color: 'white', borderRadius: "50%" }} />
+      </View>
+
+      {/* 添加提醒  */}
+      <View style={{
+        padding: '5px 10px', position: 'absolute', top: '10px', right: '45px', border: "1px solid #fff", borderRadius: "10px", backgroundColor: 'rgba(255,255,255,0.2)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+        <Text style={{ fontSize: '12px', color: '#fff' }}>
+          今日还未打卡哦!
+        </Text>
+      </View>
+
+
+      {/* 数据展示 */}
+      <View style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+
+        <View style={{ width: '50%' }}>
+          <CircleProgress
+            style={{ width: '150px', height: '150px' }}
+            strokeWidth={10}
+            clockwise={false}
+            percent={circlePercent}
+            color={color}
+          >
+            <View className="circle-content" style={{ color: '#eee' }}>
+              <View className="circle-value" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5px' }}>
+                <View>
+                  <Text style={{ fontSize: '24px' }}>{bmi.toFixed(1)}</Text>
+                  <Text style={{ fontSize: '20px' }}>BMI</Text>
+                </View>
+
+              </View>
+              <View style={{ fontSize: '14px' }}>{title}</View>
+            </View>
+          </CircleProgress>
+        </View>
+
+        <View style={{ width: '50%', display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+
+          <View style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: '#eee', gap: '20px' }}>
+            <View style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+              <View style={{ fontSize: '16px' }}>
+                体重
+              </View>
+              <View style={{ fontSize: '14px' }}>
+                65.0Kg
+              </View>
+            </View>
+
+            <View style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+              <View style={{ fontSize: '16px' }}>
+                体脂率
+              </View>
+              <View style={{ fontSize: '14px' }}>
+                20.0%
+              </View>
+            </View>
+
+          </View>
+
+          <View style={{ fontSize: '16px', color: '#e3e3e3' }}>2025/07/31 14:26</View>
+
+        </View>
+
+      </View>
+
+      {/* 对比 */}
+      <View style={{ marginTop: '15px', width: 'auto', backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: '10px', padding: '10px'
+        , display: 'flex',flexDirection:'column', gap:'10px'
+      }}>
+        
+        <View style={{ fontSize: '14px', color: '#e3e3e3' }}>
+          与前一天对比：
+        </View>
+
+        <View style={{ display: 'flex', gap: '5px', justifyContent:'space-between', alignItems:'center' }}>
+          <View style={{ fontSize: '14px', color: '#e3e3e3' }}>
+            体重：-1.2kg
+          </View>
+          <View style={{ fontSize: '14px', color: '#F2F0F0' }}>|</View>
+          <View style={{ fontSize: '14px', color: '#e3e3e3' }}>
+            体脂率：-1.2%
+          </View>
+          <View style={{ fontSize: '14px', color: '#F2F0F0' }}>|</View>
+          <View style={{ fontSize: '14px', color: '#e3e3e3' }}>
+            BMI：1.2%
+          </View>
+        </View>
+      </View>
+
     </View>
   )
 }
