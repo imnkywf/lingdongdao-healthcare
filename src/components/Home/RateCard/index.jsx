@@ -45,7 +45,7 @@ export default function RateCard() {
               <View className="circle-value">
                 <View>
                   <Text className="bmi-value">{bmi.toFixed(1)}</Text>
-                  <Text className="bmi-label">BMI</Text>
+                  <Text className="bmi-label"> BMI</Text>
                 </View>
               </View>
               <View className="bmi-status">{title}</View>

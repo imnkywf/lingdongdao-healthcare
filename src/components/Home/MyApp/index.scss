@@ -1,0 +1,56 @@
+.apps-section {
+    margin: 40rpx 0;
+    padding: 0 20rpx;
+
+    .apps-title {
+        font-size: 40rpx;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .apps-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30rpx;
+    }
+
+    .app-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 24rpx;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 8rpx 30rpx rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        cursor: pointer;
+
+        &:hover {
+            transform: translateY(-4rpx);
+            box-shadow: 0 12rpx 40rpx rgba(0, 0, 0, 0.15);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+
+        .app-icon {
+            font-size: 48rpx;
+            margin-bottom: 20rpx;
+            color: white;
+        }
+
+        .app-name {
+            font-size: 28rpx;
+            color: white;
+            font-weight: 500;
+        }
+    }
+
+    // 如果你想要不同的颜色主题，可以这样写：
+    .app-card:nth-child(1) {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .app-card:nth-child(2) {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+}
