@@ -1,3 +1,4 @@
 export default definePageConfig({
-  navigationBarTitleText: '首页'
+  // 移除静态标题，改为动态设置
+  // navigationBarTitleText: '首页'
 })
