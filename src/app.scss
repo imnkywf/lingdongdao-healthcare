@@ -1,0 +1,29 @@
+// 全局样式重置
+* {
+  box-sizing: border-box;
+}
+
+// 去掉所有默认边框和分隔线
+.nut-tabbar,
+.nut-tabbar-item,
+.custom-tabbar {
+  border: none !important;
+  outline: none !important;
+  
+  &::before,
+  &::after {
+    display: none !important;
+    border: none !important;
+  }
+}
+
+// 确保Tabbar没有默认样式
+.nut-tabbar {
+  background: transparent !important;
+  border-top: none !important;
+  
+  .nut-tabbar-item {
+    border: none !important;
+    background: transparent !important;
+  }
+}

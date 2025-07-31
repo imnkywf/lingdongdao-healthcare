@@ -5,14 +5,15 @@ import './index.scss'
 
 // nutui
 import { Button, ConfigProvider, Tabbar } from '@nutui/nutui-react-taro'
-import { Cart, HeartFill, Heart, Hi, Home, User } from '@nutui/icons-react-taro'
+import { Cart, HeartFill, Heart, Hi, Home, Order, User } from '@nutui/icons-react-taro'
+import { IconFont } from '@nutui/icons-react-taro'
 
 // 组件
-import HomeComponent from '../../compoents/home'
-import UserComponent from '../../compoents/user'
-import ShopComponent from '../../compoents/shop'
-import WeightServiceComponent from '../../compoents/weightService'
-import DiscoveryComponent from '../../compoents/discovery'
+import HomeComponent from '../../components/Home'
+import UserComponent from '../../components/User'
+import ShopComponent from '../../components/Shop'
+import WeightServiceComponent from '../../components/WeightService'
+import DiscoveryComponent from '../../components/Discovery'
 
 function Index() {
 
@@ -44,19 +45,19 @@ function Index() {
         {active === 2 && <WeightServiceComponent />}
         {active === 3 && <DiscoveryComponent />}
         {active === 4 && <UserComponent />}
-
       </View>
 
-      <div style={{ position: 'fixed', bottom: '5px', width: '100%', zIndex: 999 }}>
+      <div className="custom-tabbar">
+        <div className="tabbar-center-bg"></div>
         <Tabbar
-          activeColor='pink'
+          activeColor='#4ACFFF'
           active={active}
           onSwitch={handleSwitchTab}>
           <Tabbar.Item title="首页" icon={<Home />} />
-          <Tabbar.Item title="购物" />
-          <Tabbar.Item title="体重服务" />
-          <Tabbar.Item title="发现" />
-          <Tabbar.Item title="我的" />
+          <Tabbar.Item title="购物" icon={<Cart />} />
+          <Tabbar.Item title={<View style={{ fontSize: '12px' }}>体重服务</View>} icon={<Order />} />
+          <Tabbar.Item title="发现" icon={<Heart />} />
+          <Tabbar.Item title="我的" icon={<User />} />
         </Tabbar>
       </div>
 

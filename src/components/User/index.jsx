@@ -61,7 +61,7 @@ export default function UserComponent() {
     }
 
     const handleNicknameChange = (e) => {
-        setNickname(e.detail.value)
+        setNickname(e)
     }
 
     const menuItems = [
@@ -105,9 +105,8 @@ export default function UserComponent() {
                             placeholder="请输入昵称"
                             value={nickname}
                             type="nickname"
-                            onInput={handleNicknameChange}
+                            onChange={handleNicknameChange}
                         />
-                        <Text className="user-id">用户ID: 888888</Text>
                     </View>
                 </View>
 
