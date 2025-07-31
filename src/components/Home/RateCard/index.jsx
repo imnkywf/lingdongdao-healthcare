@@ -50,7 +50,7 @@ export default function RateCard() {
 
         <View style={{ width: '50%' }}>
           <CircleProgress
-            style={{ width: '150px', height: '150px' }}
+            style={{ width: '125px', height: '125px' }}
             strokeWidth={10}
             clockwise={false}
             percent={circlePercent}
@@ -59,7 +59,7 @@ export default function RateCard() {
             <View className="circle-content" style={{ color: '#eee' }}>
               <View className="circle-value" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5px' }}>
                 <View>
-                  <Text style={{ fontSize: '24px' }}>{bmi.toFixed(1)}</Text>
+                  <Text style={{ fontSize: '22px' }}>{bmi.toFixed(1)}</Text>
                   <Text style={{ fontSize: '20px' }}>BMI</Text>
                 </View>
 
