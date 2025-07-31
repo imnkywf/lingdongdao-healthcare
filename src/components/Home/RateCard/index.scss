@@ -1,8 +1,149 @@
 .health-rate-card {
   position: relative;
   background-color: #589eff;
-  width: auto;
   border-radius: 10px;
-  padding: 20px 20px;
+  padding: 20px;
   margin-bottom: 10rpx;
+  color: #eee;
+
+  .rate-add-btn {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .rate-add-icon {
+    width: 25px;
+    height: 25px;
+    color: white;
+  }
+
+  .rate-reminder {
+    position: absolute;
+    top: 10px;
+    right: 45px;
+    padding: 5px 10px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .reminder-text {
+      font-size: 12px;
+      color: #fff;
+    }
+  }
+
+  .rate-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .rate-circle {
+      width: 50%;
+
+      .circle-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .circle-value {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 5px;
+        }
+
+        .bmi-value {
+          font-size: 22px;
+          color: white;
+        }
+
+        .bmi-label {
+          font-size: 20px;
+          color: white;
+        }
+
+        .bmi-status {
+          font-size: 14px;
+          color: #e3e3e3;
+        }
+      }
+    }
+
+    .rate-stats {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+
+      .stats-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+
+        .stat-item {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+
+          .stat-label {
+            font-size: 16px;
+          }
+
+          .stat-value {
+            font-size: 14px;
+          }
+        }
+      }
+
+      .stats-time {
+        font-size: 16px;
+        color: #e3e3e3;
+      }
+    }
+  }
+
+  .rate-compare {
+    margin-top: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .compare-title {
+      font-size: 14px;
+      color: #e3e3e3;
+    }
+
+    .compare-values {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 5px;
+
+      .compare-item {
+        font-size: 14px;
+        color: white;
+      }
+
+      .compare-divider {
+        font-size: 14px;
+        color: #f2f0f0;
+      }
+    }
+  }
 }
