@@ -1,12 +1,11 @@
 import React from 'react'
 import {View} from '@tarojs/components'
-import EchartsIndex from "../../components/echarts";
+import LineChart from "../../components/LineChart";
 
 export default function ShopComponent() {
   return (
     <View>
-      <EchartsIndex></EchartsIndex>
-      <EchartsIndex></EchartsIndex>
+      <LineChart/>
       <View>ShopComponent</View>
 
       <custom-tab-bar ></custom-tab-bar>
