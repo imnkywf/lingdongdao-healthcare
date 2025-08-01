@@ -3,6 +3,9 @@ import { View } from '@tarojs/components'
 
 export default function DiscoveryComponent() {
   return (
-    <View>DiscoveryComponent</View>
+    <View>
+      <View>DiscoveryComponent</View>
+      <custom-tab-bar active={3}></custom-tab-bar>
+    </View>
   )
 }

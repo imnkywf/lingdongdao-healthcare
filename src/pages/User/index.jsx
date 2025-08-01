@@ -81,90 +81,93 @@ export default function UserComponent() {
     }
 
     return (
-        <View className="user-container">
+        <View>
+          <View className="user-container">
             {/* 用户信息卡片 */}
             <View className="user-card">
-                <View className="user-info">
-                    <View className="avatar-section">
-                        <button
-                            className="avatar-button"
-                            open-type="chooseAvatar"
-                            onChooseAvatar={handleChooseAvatar}
-                        >
-                            <Avatar
-                                size="large"
-                                src={avatar || 'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'}
-                            />
-                        </button>
-                        <Text className="avatar-hint">点击更换头像</Text>
-                    </View>
-
-                    <View className="user-details">
-                        <Input
-                            className="nickname-input"
-                            placeholder="请输入昵称"
-                            value={nickname}
-                            type="nickname"
-                            onChange={handleNicknameChange}
-                        />
-                    </View>
+              <View className="user-info">
+                <View className="avatar-section">
+                  <button
+                    className="avatar-button"
+                    open-type="chooseAvatar"
+                    onChooseAvatar={handleChooseAvatar}
+                  >
+                    <Avatar
+                      size="large"
+                      src={avatar || 'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'}
+                    />
+                  </button>
+                  <Text className="avatar-hint">点击更换头像</Text>
                 </View>
 
-                {!isLoggedIn && (
-                    <View className="login-section">
-                        <Button
-                            type="primary"
-                            onClick={handleLogin}
-                            className="login-button"
-                        >
-                            微信登录
-                        </Button>
-                        <Button
-                            type="default"
-                            onClick={handleFetchInfo}
-                            className="fetch-info-button"
-                        >
-                            获取用户信息
-                        </Button>
-                    </View>
-                )}
+                <View className="user-details">
+                  <Input
+                    className="nickname-input"
+                    placeholder="请输入昵称"
+                    value={nickname}
+                    type="nickname"
+                    onChange={handleNicknameChange}
+                  />
+                </View>
+              </View>
+
+              {!isLoggedIn && (
+                <View className="login-section">
+                  <Button
+                    type="primary"
+                    onClick={handleLogin}
+                    className="login-button"
+                  >
+                    微信登录
+                  </Button>
+                  <Button
+                    type="default"
+                    onClick={handleFetchInfo}
+                    className="fetch-info-button"
+                  >
+                    获取用户信息
+                  </Button>
+                </View>
+              )}
             </View>
 
             {/* 功能菜单 */}
             <View className="menu-section">
-                <CellGroup>
-                    {menuItems.map((item, index) => (
-                        <Cell
-                            key={index}
-                            title={item.title}
-                            isLink
-                            onClick={() => handleMenuClick(item)}
-                            className="menu-item"
-                        />
-                    ))}
-                </CellGroup>
+              <CellGroup>
+                {menuItems.map((item, index) => (
+                  <Cell
+                    key={index}
+                    title={item.title}
+                    isLink
+                    onClick={() => handleMenuClick(item)}
+                    className="menu-item"
+                  />
+                ))}
+              </CellGroup>
             </View>
 
             {/* 退出登录 */}
             {isLoggedIn && (
-                <View className="logout-section">
-                    <Button
-                        type="danger"
-                        className="logout-button"
-                        onClick={() => {
-                            setIsLoggedIn(false)
-                            setAvatar("")
-                            setNickname("")
-                            Taro.showToast({
-                                title: '已退出登录',
-                                icon: 'success'
-                            })
-                        }}
-                    >
-                        退出登录
-                    </Button>
-                </View>
+              <View className="logout-section">
+                <Button
+                  type="danger"
+                  className="logout-button"
+                  onClick={() => {
+                    setIsLoggedIn(false)
+                    setAvatar("")
+                    setNickname("")
+                    Taro.showToast({
+                      title: '已退出登录',
+                      icon: 'success'
+                    })
+                  }}
+                >
+                  退出登录
+                </Button>
+              </View>
             )}
+          </View>
+          <custom-tab-bar active={4}></custom-tab-bar>
         </View>
     )
 }
