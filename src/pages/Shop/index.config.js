@@ -1,4 +1,6 @@
 export default definePageConfig({
   navigationBarTitleText: '购物车',
-  usingComponents: {}
+  enablePullDownRefresh: true,
+  backgroundTextStyle: 'dark',
+  backgroundColor: '#f7f7f7'
 })
