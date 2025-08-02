@@ -23,11 +23,10 @@ export default function UserComponent() {
   const menuItems = [
     { title: '我的订单', path: '/pages/orders/index' },
     { title: '家庭成员', path: '/pages/orders/index' },
-    { title: '健康档案', path: '/pages/health/index' },
+    { title: '我的目标', path: '/pages/health/index' },
+    { title: '数据总览', path: '/pages/settings/index' },
     { title: '体重记录', path: '/pages/weight/index' },
-    { title: '设置', path: '/pages/settings/index' },
-    { title: '帮助中心', path: '/pages/help/index' },
-    { title: '关于我们', path: '/pages/about/index' }
+    { title: '个性皮肤', path: '/pages/weight/index' },
   ]
 
   const handleMenuClick = (item) => {
@@ -42,6 +41,15 @@ export default function UserComponent() {
       <View className="user-container">
         {/* 用户信息卡片 */}
         <View className="user-card">
+
+          {
+            isLoggedIn && (
+              <View className="user-card-header">
+                会员等级：1级
+              </View>
+            )
+          }
+
           <View className="user-info">
             <View className="avatar-section">
               <Avatar
