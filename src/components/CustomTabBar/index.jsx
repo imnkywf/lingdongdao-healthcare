@@ -9,7 +9,7 @@ const CustomTabBar = (props) => {
   const [active, setActive] = useState(0) // 0:首页 1:购物 2:体重服务 3:发现 4:我的
 
   const pagesUrl = [
-    '/pages/index/index',
+    '/pages/home/index',
     '/pages/Shop/index',
     '/pages/WeightService/index',
     '/pages/Discovery/index',

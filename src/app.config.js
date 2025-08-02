@@ -5,11 +5,11 @@ export default defineAppConfig({
     'custom-tab-bar': './components/CustomTabBar/index'
   },
   pages: [
-    'pages/index/index',
-    'pages/Shop/index',
-    'pages/Discovery/index',
-    'pages/User/index',
-    'pages/WeightService/index',
+    'pages/home/index',
+    'pages/shop/index',
+    'pages/discovery/index',
+    'pages/user/index',
+    'pages/weightService/index',
   ],
   window: {
     backgroundTextStyle: 'light',
@@ -24,23 +24,23 @@ export default defineAppConfig({
     backgroundColor: '#fff',
     list: [
       {
-        pagePath: 'pages/index/index',
+        pagePath: 'pages/home/index',
         text: '首页',
       },
       {
-        pagePath: 'pages/Shop/index',
+        pagePath: 'pages/shop/index',
         text: '购物车',
       },
       {
-        pagePath: 'pages/WeightService/index',
+        pagePath: 'pages/weightService/index',
         text: '体重服务',
       },
       {
-        pagePath: 'pages/Discovery/index',
+        pagePath: 'pages/discovery/index',
         text: '发现',
       },
       {
-        pagePath: 'pages/User/index',
+        pagePath: 'pages/user/index',
         text: '我的',
       }
     ]
