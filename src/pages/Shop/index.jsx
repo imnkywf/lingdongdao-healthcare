@@ -40,6 +40,7 @@ export default function ShopComponent() {
     console.log('下拉刷新')
 
     setData(p => p.map(e => ({...e, price: e.price + 1})))
+    stopPullDownRefresh()
     //   stopPullDownRefresh()
 
     // loadData().then(() => {
