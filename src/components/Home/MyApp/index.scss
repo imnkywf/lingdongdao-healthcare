@@ -46,20 +46,20 @@
         }
     }
 
-    // 为每个卡片设置不同的颜色主题（更暗）
+    // 为每个卡片设置不同的颜色主题（稍微亮一点）
     .app-card:nth-child(1) {
-        background: linear-gradient(135deg, #4a5bc4 0%, #5a3578 100%);
+        background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
     }
 
     .app-card:nth-child(2) {
-        background: linear-gradient(135deg, #c075d5 0%, #cc3a48 100%);
+        background: linear-gradient(135deg, #d885e9 0%, #e04a5a 100%);
     }
 
     .app-card:nth-child(3) {
-        background: linear-gradient(135deg, #3a85d4 0%, #00b8c8 100%);
+        background: linear-gradient(135deg, #4595e8 0%, #00d8e8 100%);
     }
 
     .app-card:nth-child(4) {
-        background: linear-gradient(135deg, #2fb855 0%, #24b5a1 100%);
+        background: linear-gradient(135deg, #3ad269 0%, #2ed9c5 100%);
     }
 }
