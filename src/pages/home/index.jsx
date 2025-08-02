@@ -30,7 +30,7 @@ function Index() {
        {/* 我的应用 */}
        <MyApp />
 
-       {/* 健康记录 */}
+       {/* 健康数据 */}
        <HealthRecord />
 
 

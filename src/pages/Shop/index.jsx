@@ -14,7 +14,7 @@ export default function ShopComponent() {
     try {
       // 模拟API调用延迟
       await new Promise(resolve => setTimeout(resolve, 1000))
-
+      
       // 这里可以添加实际的数据获取逻辑
       const mockData = [
         { id: 1, name: '商品1', price: 99 },
@@ -39,8 +39,8 @@ export default function ShopComponent() {
   usePullDownRefresh(() => {
     console.log('下拉刷新')
 
-    setData(p => p.map(e => ({ ...e, price: e.price + 1 })))
-    stopPullDownRefresh()
+    setData(p => p.map(e => ({...e, price: e.price + 1})))
+    //   stopPullDownRefresh()
 
     // loadData().then(() => {
     //   // 停止下拉刷新动画
@@ -48,24 +48,32 @@ export default function ShopComponent() {
   })
 
   return (
-    <View>
+    <View className="shop-container">
+
+      {/* 显示刷新状态 */}
+      {refreshing && (
+        <View className="loading-container">
+          <View className="dot dot1"></View> 
+          <View className="d ot dot2"></View>
+          <View className="dot dot3"></View>
+          <View className="loading-text">正在刷新...</View>
+        </View>
+      )}
 
       {/* 显示商品列表 */}
-      <View style={{ padding: '10px' }}>
-        {data.map(item => (
-          <View key={item.id} style={{
-            padding: '10px',
-            margin: '5px 0',
-            border: '1px solid #eee',
-            borderRadius: '5px'
-          }}>
-            <View>{item.name}</View>
-            <View style={{ color: '#f00' }}>¥{item.price}</View>
+      <View className="product-grid">
+        {data.map(item => ( 
+          <View key={item.id} className="product-card">
+            <View className="product-name">{item.name}</View>
+            <View className="product-price">
+              <View className="price-symbol">¥</View>
+              {item.price}
+            </View>
           </View>
         ))}
       </View>
 
-      <LineChart />
+      {/* <LineChart /> */}
 
       <custom-tab-bar></custom-tab-bar>
     </View>

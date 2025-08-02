@@ -2,7 +2,42 @@
     font-size: 40rpx;
     font-weight: 600;
     color: #333;
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 0 20rpx;
+    margin-bottom: 20rpx;
+}
+
+.overview-btn {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #67a6ff 0%, #5b9aff 100%);
+    color: white;
+    padding: 12rpx 20rpx;
+    border-radius: 20rpx;
+    box-shadow: 0 4rpx 12rpx rgba(22, 119, 255, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &:active {
+        transform: translateY(2rpx);
+        box-shadow: 0 2rpx 8rpx rgba(22, 119, 255, 0.4);
+    }
+
+    .overview-text {
+        font-size: 24rpx;
+        font-weight: 500;
+        margin-right: 8rpx;
+    }
+
+    .overview-arrow {
+        font-size: 20rpx;
+        font-weight: 600;
+    }
 }
 
 .health-record {

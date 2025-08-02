@@ -1,0 +1,174 @@
+.login-container {
+    min-height: 100vh;
+    background: #667eea;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    justify-content: center;
+    gap: 20px;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 32px;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.login-content {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.welcome-text {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.welcome-title {
+    display: block;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.welcome-desc {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-button {
+    background: linear-gradient(135deg, #1677ff 0%, #1677ff 100%);
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 8px rgba(7, 193, 96, 0.4);
+}
+
+.login-button.loading {
+    background: linear-gradient(135deg, #07c160 0%, #00a854 100%);
+    opacity: 0.8;
+}
+
+.button-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.loading-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.loading-dots {
+    display: flex;
+    gap: 4px;
+}
+
+.dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: white;
+    animation: loading-dot 1.4s infinite ease-in-out;
+}
+
+.dot:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.dot:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0s;
+}
+
+@keyframes loading-dot {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.privacy-notice {
+    text-align: center;
+    padding: 0 10px;
+}
+
+.privacy-text {
+    font-size: 12px;
+    color: #999;
+    line-height: 1.5;
+}
+
+.privacy-link {
+    color: #1677FF;
+    text-decoration: none;
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 30px;
+    flex-shrink: 0;
+}
+
+.footer-text {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+// 响应式设计
+@media (max-width: 375px) {
+    .login-container {
+        padding: 30px 15px;
+    }
+
+    .app-title {
+        font-size: 24px;
+    }
+
+    .login-content {
+        padding: 25px 20px;
+    }
+}

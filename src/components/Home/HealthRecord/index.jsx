@@ -16,7 +16,13 @@ export default function HealthRecord() {
 
     return (
         <View className="health-record-container">
-            <Text className="health-record-title">健康记录</Text>
+            <View className="header-section">
+                <Text className="health-record-title">健康数据</Text>
+                <View className="overview-btn">
+                    <Text className="overview-text">数据总览</Text>
+                    <Text className="overview-arrow">{'>'}</Text>
+                </View>
+            </View>
 
             <View className="health-record">
 
