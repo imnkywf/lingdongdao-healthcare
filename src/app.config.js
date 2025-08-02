@@ -10,6 +10,7 @@ export default defineAppConfig({
     'pages/discovery/index',
     'pages/user/index',
     'pages/weightService/index',
+    'pages/login/index',
   ],
   window: {
     backgroundTextStyle: 'light',

@@ -10,10 +10,10 @@ const CustomTabBar = (props) => {
 
   const pagesUrl = [
     '/pages/home/index',
-    '/pages/Shop/index',
-    '/pages/WeightService/index',
-    '/pages/Discovery/index',
-    '/pages/User/index',
+    '/pages/shop/index',
+    '/pages/weightService/index',
+    '/pages/discovery/index',
+    '/pages/user/index',
   ]
 
   // 切换 Tabbar
