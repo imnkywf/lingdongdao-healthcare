@@ -1,5 +1,5 @@
 export default definePageConfig({
-  navigationBarTitleText: '购物车',
+  navigationBarTitleText: '有赞商城',
   enablePullDownRefresh: true,
   backgroundTextStyle: 'dark',
   backgroundColor: '#f7f7f7'
