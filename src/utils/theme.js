@@ -1,7 +1,7 @@
 export const themes = {
     light: {
       // ...其他变量
-      ratecardBg: '#1677FF',
+      ratecardBg: '#589eff',
       tabbarActiveColor: '#1677FF',
 
     },
