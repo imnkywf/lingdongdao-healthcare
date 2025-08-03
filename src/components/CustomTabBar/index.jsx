@@ -1,12 +1,14 @@
-import {View} from "@tarojs/components";
-import {Tabbar} from "@nutui/nutui-react-taro";
-import {Cart, Heart, Home, Order, User} from "@nutui/icons-react-taro";
-import React, {useState, useEffect} from "react";
+import { View } from "@tarojs/components";
+import { Tabbar, ConfigProvider } from "@nutui/nutui-react-taro";
+import { Cart, Heart, Home, Order, User } from "@nutui/icons-react-taro";
+import React, { useState, useEffect } from "react";
 import Taro from '@tarojs/taro'
 import './index.scss'
+import { themes } from '../../utils/theme.js'
 
 const CustomTabBar = (props) => {
   const [active, setActive] = useState(0) // 0:首页 1:购物 2:体重服务 3:发现 4:我的
+  const [theme, setTheme] = useState(Taro.getStorageSync('theme') || 'light')
 
   const pagesUrl = [
     '/pages/home/index',
@@ -57,19 +59,22 @@ const CustomTabBar = (props) => {
   });
 
   return (
+
     <View>
       <div className="custom-tabbar">
         <div className="tabbar-center-bg"></div>
-        <Tabbar
-          activeColor='#4ACFFF'
-          value={active}
-          onSwitch={handleSwitchTab}>
-          <Tabbar.Item title="首页" icon={<Home />} />
-          <Tabbar.Item title="购物" icon={<Cart />} />
-          <Tabbar.Item title={<View style={{ fontSize: '12px' }}>体重服务</View>} icon={<Order />} />
-          <Tabbar.Item title="发现" icon={<Heart />} />
-          <Tabbar.Item title="我的" icon={<User />} />
-        </Tabbar>
+  
+          <Tabbar
+            activeColor={themes[theme].tabbarActiveColor}
+            value={active}
+            onSwitch={handleSwitchTab}>
+            <Tabbar.Item title="首页" icon={<Home />} />
+            <Tabbar.Item title="购物" icon={<Cart />} />
+            <Tabbar.Item title={<View style={{ fontSize: '12px' }}>体重服务</View>} icon={<Order />} />
+            <Tabbar.Item title="发现" icon={<Heart />} />
+            <Tabbar.Item title="我的" icon={<User />} />
+          </Tabbar>
+
       </div>
     </View>
   )

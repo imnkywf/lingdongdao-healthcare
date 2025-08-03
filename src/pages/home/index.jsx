@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { View, Text } from '@tarojs/components'
 import { Button, ConfigProvider, TextArea, Dialog } from '@nutui/nutui-react-taro'
 import { Feedback, Retweet } from '@nutui/icons-react-taro'
+import Taro from '@tarojs/taro'
 
 import './index.scss'
 import RateCard from '../../components/Home/RateCard/index'

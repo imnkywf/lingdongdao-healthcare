@@ -52,8 +52,10 @@ export default function ShopComponent() {
   usePullDownRefresh(() => {
     console.log('下拉刷新')
 
-    setData(p => p.map(e => ({ ...e, price: e.price + 1 })))
-    stopPullDownRefresh()
+    setTimeout(() => {
+      stopPullDownRefresh()
+    }, 1000)
+
     //   stopPullDownRefresh()
 
     // loadData().then(() => {

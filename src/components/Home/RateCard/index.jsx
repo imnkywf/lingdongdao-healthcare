@@ -1,12 +1,16 @@
-import { useRef, useMemo } from 'react'
+import { useRef, useMemo, useState } from 'react'
 import { View, Text } from '@tarojs/components'
 import { CircleProgress } from '@nutui/nutui-react-taro'
 import { Add } from '@nutui/icons-react-taro'
 import './index.scss'
+import { themes } from '../../../utils/theme.js'
+import Taro from '@tarojs/taro'
 
 export default function RateCard() {
+
   const bmi = 20
   const containerRef = useRef(null)
+  const [theme, setTheme] = useState(Taro.getStorageSync('theme') || 'light')
 
   const { color, percent: circlePercent, title } = useMemo(() => {
     if (bmi < 18.5) {
@@ -23,7 +27,7 @@ export default function RateCard() {
   }, [bmi])
 
   return (
-    <View className="health-rate-card">
+    <View className="health-rate-card" style={{ backgroundColor: themes[theme].ratecardBg }}>
       <View className="rate-add-btn">
         <Add className="rate-add-icon" />
       </View>
