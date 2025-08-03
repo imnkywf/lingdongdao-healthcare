@@ -21,18 +21,17 @@ export default function UserComponent() {
   }
 
   const menuItems = [
-    { title: '我的订单', path: '/pages/orders/index' },
-    { title: '家庭成员', path: '/pages/orders/index' },
-    { title: '我的目标', path: '/pages/health/index' },
-    { title: '数据总览', path: '/pages/settings/index' },
-    { title: '体重记录', path: '/pages/weight/index' },
-    { title: '个性皮肤', path: '/pages/weight/index' },
+    { title: '我的订单', path: '/pages/user/theme-settings/index' },
+    { title: '家庭成员', path: '/pages/user/theme-settings/index' },
+    { title: '我的目标', path: '/pages/user/theme-settings/index' },
+    { title: '数据总览', path: '/pages/user/theme-settings/index' },
+    { title: '体重记录', path: '/pages/user/theme-settings/index' },
+    { title: '个性皮肤', path: '/pages/user/theme-settings/index' },
   ]
 
   const handleMenuClick = (item) => {
-    Taro.showToast({
-      title: `点击了${item.title}`,
-      icon: 'none'
+    Taro.navigateTo({
+      url: item.path
     })
   }
 

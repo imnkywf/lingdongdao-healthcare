@@ -1,10 +1,11 @@
-import { useRef, useMemo, useState } from 'react'
+import { useRef, useMemo, useState, useEffect } from 'react'
 import { View, Text } from '@tarojs/components'
 import { CircleProgress } from '@nutui/nutui-react-taro'
 import { Add } from '@nutui/icons-react-taro'
 import './index.scss'
 import { themes } from '../../../utils/theme.js'
 import Taro from '@tarojs/taro'
+import { useDidShow } from '@tarojs/taro'
 
 export default function RateCard() {
 
@@ -25,6 +26,10 @@ export default function RateCard() {
       return { title: '极度肥胖', color: '#FF0000', percent: 100 }
     }
   }, [bmi])
+
+  useDidShow(() => {
+    setTheme(Taro.getStorageSync('theme') || 'light')
+  })
 
   return (
     <View className="health-rate-card" style={{ backgroundColor: themes[theme].ratecardBg }}>

@@ -12,6 +12,8 @@ export default defineAppConfig({
     'pages/weightService/index',
     'pages/login/index',
     'pages/edit-profile/index',
+    'pages/home/scan/index',
+    'pages/user/theme-settings/index',
   ],
   window: {
     backgroundTextStyle: 'light',

@@ -68,11 +68,10 @@
 
 .login-button:active {
     transform: translateY(2px);
-    box-shadow: 0 2px 8px rgba(7, 193, 96, 0.4);
 }
 
 .login-button.loading {
-    background: linear-gradient(135deg, #07c160 0%, #00a854 100%);
+    background: linear-gradient(135deg, #1677ff 0%, #1677ff 100%);
     opacity: 0.8;
 }
 
